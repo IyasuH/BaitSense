@@ -1,0 +1,167 @@
+/**
+ * Content script styles for BaitSense tooltips
+ */
+
+.baitsense-tooltip {
+  position: absolute;
+  z-index: 999999;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  min-width: 280px;
+  max-width: 360px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: auto;
+}
+
+.baitsense-tooltip--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.baitsense-tooltip--loading,
+.baitsense-tooltip--error {
+  min-width: 200px;
+}
+
+.baitsense-tooltip__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.baitsense-tooltip__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #1f2937;
+}
+
+.baitsense-tooltip__icon {
+  font-size: 18px;
+}
+
+.baitsense-tooltip__score {
+  font-weight: 700;
+  font-size: 20px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.baitsense-tooltip__score--very-low {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.baitsense-tooltip__score--low {
+  background: linear-gradient(135deg, #84cc16, #65a30d);
+}
+
+.baitsense-tooltip__score--medium {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.baitsense-tooltip__score--medium-high {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+.baitsense-tooltip__score--high {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.baitsense-tooltip__body {
+  color: #4b5563;
+}
+
+.baitsense-tooltip__verdict {
+  margin: 0 0 12px 0;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.baitsense-tooltip__reasons {
+  margin: 0 0 12px 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.baitsense-tooltip__reasons li {
+  margin-bottom: 4px;
+  color: #6b7280;
+}
+
+.baitsense-tooltip__confidence {
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: right;
+}
+
+/* Loading state */
+.baitsense-tooltip--loading .baitsense-tooltip__icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error state */
+.baitsense-tooltip--error .baitsense-tooltip__header {
+  border-bottom-color: #fecaca;
+}
+
+.baitsense-tooltip--error .baitsense-tooltip__title {
+  color: #dc2626;
+}
+
+.baitsense-tooltip--error .baitsense-tooltip__body p {
+  color: #991b1b;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .baitsense-tooltip {
+    background: #1f2937;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  }
+
+  .baitsense-tooltip__header {
+    border-bottom-color: #374151;
+  }
+
+  .baitsense-tooltip__title {
+    color: #f9fafb;
+  }
+
+  .baitsense-tooltip__body {
+    color: #d1d5db;
+  }
+
+  .baitsense-tooltip__verdict {
+    color: #f3f4f6;
+  }
+
+  .baitsense-tooltip__reasons li {
+    color: #9ca3af;
+  }
+
+  .baitsense-tooltip__confidence {
+    color: #6b7280;
+  }
+}

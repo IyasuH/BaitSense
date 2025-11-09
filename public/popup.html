@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BaitSense</title>
+  <link rel="stylesheet" href="dist/popup.css">
+</head>
+<body>
+  <div class="popup">
+    <header class="popup__header">
+      <div class="popup__logo">
+        <span class="popup__icon">🎯</span>
+        <h1 class="popup__title">BaitSense</h1>
+      </div>
+      <p class="popup__tagline">AI-Powered Clickbait Detection</p>
+    </header>
+
+    <main class="popup__content">
+      <section class="popup__section">
+        <div class="toggle-group">
+          <label class="toggle-label">
+            <span>Enable Detection</span>
+            <input type="checkbox" id="enableToggle" class="toggle-input">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="popup__section">
+        <h2 class="section__title">Sensitivity Threshold</h2>
+        <div class="slider-group">
+          <input type="range" id="thresholdSlider" class="slider" min="0" max="100" step="10">
+          <div class="slider-labels">
+            <span>Low</span>
+            <span id="thresholdValue" class="slider-value">60%</span>
+            <span>High</span>
+          </div>
+          <p class="slider-description">
+            Only show warnings for videos with clickbait score above this threshold
+          </p>
+        </div>
+      </section>
+
+      <section class="popup__section">
+        <h2 class="section__title">Cache Settings</h2>
+        <div class="input-group">
+          <label for="cacheExpiry">Cache Duration (hours)</label>
+          <input type="number" id="cacheExpiry" class="input" min="1" max="168" value="24">
+        </div>
+        <button id="clearCacheBtn" class="button button--secondary">
+          Clear Cache
+        </button>
+      </section>
+
+      <section class="popup__section popup__section--stats">
+        <h2 class="section__title">Statistics</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card__value" id="videosAnalyzed">0</div>
+            <div class="stat-card__label">Videos Analyzed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value" id="clickbaitDetected">0</div>
+            <div class="stat-card__label">Clickbait Detected</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="popup__footer">
+      <button id="saveBtn" class="button button--primary">
+        Save Settings
+      </button>
+      <p class="popup__version">v1.0.0</p>
+    </footer>
+  </div>
+
+  <script src="dist/popup.js"></script>
+</body>
+</html>
